@@ -1,0 +1,3 @@
+[submodule "Assets/WrapShader"]
+	path = Assets/WrapShader
+	url = https://github.com/sammedhi/WrapShader.git

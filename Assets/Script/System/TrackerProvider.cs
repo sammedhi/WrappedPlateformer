@@ -12,7 +12,7 @@ namespace CircularPlatformer
         /// <summary>
         /// The list of registered trackers
         /// </summary>
-        readonly List<ITracker> _trackers;
+        readonly List<ITracker> _trackers = new();
 
         /// <summary>
         /// Registers a new tracker.

@@ -10,11 +10,16 @@ namespace CircularPlatformer
     {
         private TrackerProvider _trackerProvider;
 
-        private void Start()
+        private void Awake()
         {
             _trackerProvider = ServiceLocator.Get<TrackerProvider>();
 
             Assert.IsNotNull(_trackerProvider, "There is no tracker provider to register to");
+        }
+
+        void OnEnable()
+        {
+            _trackerProvider.Register(this);
         }
 
         void OnDisable()

@@ -27,7 +27,7 @@ namespace CircularPlatformer
         {
             var targetPosition = _trackerComponent.TrackedPosition;
             var rotation = Quaternion.identity;
-            rotation.SetFromToRotation(originalPointDirection, targetPosition);
+            rotation.SetFromToRotation(originalPointDirection, targetPosition - transform.position);
             transform.rotation = rotation;
             Debug.Log(targetPosition);
         }

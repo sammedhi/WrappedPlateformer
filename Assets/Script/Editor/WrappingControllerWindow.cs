@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using WrapShader;
 
-namespace CircularPlatformer
+namespace CircularPlatformer.Editor
 {
     /// <summary>
     /// Editor window that provides utilities to control the wrapping shaders

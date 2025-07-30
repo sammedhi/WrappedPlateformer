@@ -1,0 +1,19 @@
+{
+    "name": "CircularPlatformer.Editor",
+    "rootNamespace": "CircularPlatformer.Editor",
+    "references": [
+        "GUID:4fca0385bc69c2548adc2cf3f3824c9e",
+        "GUID:a961e64497ab656499a4f71de61b46bd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

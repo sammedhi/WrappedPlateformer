@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,16 +8,30 @@ namespace CircularPlatformer
     /// Base class for tracking where the player is aiming with the
     /// current controller
     /// </summary>
-    public abstract class ControllerTracker : ITracker
+    public abstract class ControllerTracker : ITracker, IDisposable
     {
-        private IWorldCollider _mapCollider;
+        /// <summary>
+        /// The interface used to compute how ray will collide with the world space
+        /// </summary>
+        private readonly IWorldCollider _mapCollider;
 
-        private IWorldMapper _worldMapper;
+        /// <summary>
+        /// The interface explain how a point on the space world
+        /// should be projected onto the original space
+        /// </summary>
+        private readonly IWorldMapper _worldMapper;
 
-        protected virtual void Start()
+        private bool _disposedValue;
+
+        private readonly TrackerProvider _trackerProvider;
+
+        public ControllerTracker()
         {
             _mapCollider = ServiceLocator.Get<IWorldCollider>();
             _worldMapper = ServiceLocator.Get<IWorldMapper>();
+            _trackerProvider = ServiceLocator.Get<TrackerProvider>();
+
+            _trackerProvider.Register(this);
 
             Assert.IsNotNull(_mapCollider, "There are no MapCollider registered");
             Assert.IsNotNull(_worldMapper, "There are no WorldMapper registered");
@@ -42,5 +57,32 @@ namespace CircularPlatformer
             return trackedPosition;
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                _trackerProvider.Unregister(this);
+                _disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~ControllerTracker()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

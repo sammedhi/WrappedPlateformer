@@ -2,7 +2,8 @@
     "name": "CircularPlatformer",
     "rootNamespace": "CircularPlatformer",
     "references": [
-        "GUID:a961e64497ab656499a4f71de61b46bd"
+        "GUID:a961e64497ab656499a4f71de61b46bd",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

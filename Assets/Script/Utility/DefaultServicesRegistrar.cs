@@ -13,6 +13,8 @@ namespace CircularPlatformer
         private void Awake()
         {
             ServiceLocator.Register(new TrackerProvider());
+            ServiceLocator.Register<IWorldCollider>(new PlanWorldCollider(Vector3.back, Vector3.forward * 30));
+            ServiceLocator.Register<IWorldMapper>(new IdentityWorldMapper());
         }
     }
 }
